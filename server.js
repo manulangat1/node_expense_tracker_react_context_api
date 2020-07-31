@@ -3,14 +3,16 @@ const dotenv = require('dotenv')
 const colors = require('colors')
 const morgan = require('morgan')
 
-
+//connect DB 
+const connectDB = require('./config/db')
 //route imports 
 const transactions = require('./routes/transactions')
 
 dotenv.config({path:'./config/config.env'})
 
 const app = express()
-
+//connecting to the db 
+connectDB()
 app.use('/api/v1/transactions/',transactions)
 // app.get('/', (req,res) => res.send('Hello'))
 const PORT = process.env.PORT || 5000
