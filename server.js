@@ -11,6 +11,7 @@ const transactions = require('./routes/transactions')
 dotenv.config({path:'./config/config.env'})
 
 const app = express()
+app.use(express.json())
 //connecting to the db 
 connectDB()
 app.use('/api/v1/transactions/',transactions)
