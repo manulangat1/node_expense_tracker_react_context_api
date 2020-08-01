@@ -12,6 +12,9 @@ dotenv.config({path:'./config/config.env'})
 
 const app = express()
 app.use(express.json())
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 //connecting to the db 
 connectDB()
 app.use('/api/v1/transactions/',transactions)
